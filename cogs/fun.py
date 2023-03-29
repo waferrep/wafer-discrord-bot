@@ -7,7 +7,6 @@ import textwrap
 import asyncio
 import os
 import re
-import requests
 from io import BytesIO
 
 
@@ -106,25 +105,25 @@ class fun(commands.Cog):
                         thefont = ImageFont.truetype('deltarune/font.ttf', fontsize)
                         box = Image.open('deltarune/deltabox.jpg')
                         input = textwrap.fill(text=user_message, width=25)
-                        await avamember.avatar.save(f'deltarune/{message.author.id}.png')
-                        ava = Image.open(f'deltarune/{message.author.id}.png')
+                        await avamember.avatar.save(f'deltarune/temp/{message.author.id}.png')
+                        ava = Image.open(f'deltarune/temp/{message.author.id}.png')
                         bwAva = ava.convert("L")
                         shrink = bwAva.resize((30,30))
                         pixel = shrink.resize((100, 100), Image.NEAREST)
-                        pixel.save(f'deltarune/{message.author.id}bw.png')
+                        pixel.save(f'deltarune/temp/{message.author.id}bw.png')
                         d1 = ImageDraw.Draw(box)
                         d1.text((150, 30), "*  " + input, fill=(255, 255, 255),font=thefont)
-                        box.save("deltarune/boxedit.png")
-                        new = Image.open("deltarune/boxedit.png")
-                        pixel1 = Image.open(f'deltarune/{message.author.id}bw.png')
+                        box.save("deltarune/temp/boxedit.png")
+                        new = Image.open("deltarune/temp/boxedit.png")
+                        pixel1 = Image.open(f'deltarune/temp/{message.author.id}bw.png')
                         new.paste(pixel1, (35, 35))
-                        new.save(f'deltarune/{message.author.id}final.png')
+                        new.save(f'deltarune/temp/{message.author.id}final.png')
 
                         await message.delete()
-                        await message.channel.send(file=discord.File(f'deltarune/{message.author.id}final.png'))
-                        os.remove(f'deltarune/{message.author.id}.png')
-                        os.remove(f'deltarune/{message.author.id}bw.png')
-                        os.remove(f'deltarune/{message.author.id}final.png')
+                        await message.channel.send(file=discord.File(f'deltarune/temp/{message.author.id}final.png'))
+                        os.remove(f'deltarune/temp/{message.author.id}.png')
+                        os.remove(f'deltarune/temp/{message.author.id}bw.png')
+                        os.remove(f'deltarune/temp/{message.author.id}final.png')
 
     
     @commands.hybrid_command()
