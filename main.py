@@ -5,8 +5,8 @@ from discord.ext import commands
 from discord.ext import tasks
 
 
-TOKEN = 'OTU3MzkzMTg1NjExNTk5OTIz.GqqeEO.KyE9yOod4l0SZnEINq_QL7rHKFcgPdiOxZaVRg'
-ID = 146395257313951744
+TOKEN = #TOKENHERE
+ID = #IDHERE
 
 async def main():
     #start client
