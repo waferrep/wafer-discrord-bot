@@ -38,37 +38,37 @@ class deltarune(commands.Cog):
             box = Image.open('deltarune/deltabox.jpg')
             input = textwrap.fill(text=input, width=25)
             if avamember != ('deltarune/userpfp2.png'):
-                await avamember.avatar.save('deltarune/userpfp.png') # type: ignore
-                ava = Image.open('deltarune/userpfp.png')
+                await avamember.avatar.save('deltarune/temp/userpfp.png') # type: ignore
+                ava = Image.open('deltarune/temp/userpfp.png')
             else:
-                ava = Image.open('deltarune/userpfp2.png')
+                ava = Image.open('deltarune/temp/userpfp2.png')
 
             if color == 'black': #make black - this sucks but it works
                 bwAva = ava.convert("L")
                 shrink = bwAva.resize((30,30))
                 pixel = shrink.resize((100, 100), Image.NEAREST)
-                pixel.save("deltarune/pixelpfpbw.png")
+                pixel.save("deltarune/temp/pixelpfpbw.png")
                 d1 = ImageDraw.Draw(box)
                 d1.text((150, 30), "*  " + input, fill=(255, 255, 255),font=thefont)
-                box.save("deltarune/boxedit.png")
-                new = Image.open("deltarune/boxedit.png")
-                pixel1 = Image.open('deltarune/pixelpfpbw.png')
+                box.save("deltarune/temp/boxedit.png")
+                new = Image.open("deltarune/temp/boxedit.png")
+                pixel1 = Image.open('deltarune/temp/pixelpfpbw.png')
                 new.paste(pixel1, (35, 35))
-                new.save('deltarune/final.png')
-                await ctx.send(file=discord.File('deltarune/final.png'))
+                new.save('deltarune/temp/final.png')
+                await ctx.send(file=discord.File('deltarune/temp/final.png'))
 
             else: #make color
                 shrink = ava.resize((30,30))
                 pixel = shrink.resize((100, 100), Image.NEAREST)
-                pixel.save("deltarune/pixelpfp.png")
+                pixel.save("deltarune/temp/pixelpfp.png")
                 d1 = ImageDraw.Draw(box)
                 d1.text((150, 30), "*  "+ input, fill=(255, 255, 255),font=thefont)
-                box.save("deltarune/boxedit.png")
-                new = Image.open("deltarune/boxedit.png")
-                pixel1 = Image.open('deltarune/pixelpfp.png')
+                box.save("deltarune/temp/boxedit.png")
+                new = Image.open("deltarune/temp/boxedit.png")
+                pixel1 = Image.open('deltarune/temp/pixelpfp.png')
                 new.paste(pixel1, (35, 35))
-                new.save('deltarune/final.png')
-                await ctx.send(file=discord.File('deltarune/final.png'))
+                new.save('deltarune/temp/final.png')
+                await ctx.send(file=discord.File('deltarune/temp/final.png'))
 
 
 async def setup(client):
