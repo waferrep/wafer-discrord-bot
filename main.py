@@ -3,10 +3,11 @@ import os
 import asyncio
 from discord.ext import commands
 from discord.ext import tasks
+import config
 
-
-TOKEN = #TOKENHERE
-ID = #IDHERE
+# create a config.py in the same folder as main.py and add these two variables
+TOKEN = config.TOKEN
+ID = config.ID
 
 async def main():
     #start client
