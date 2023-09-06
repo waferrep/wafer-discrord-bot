@@ -21,16 +21,6 @@ class deltarune(commands.Cog):
             if color == None or input == None or avamember == None: #condensed
                 await ctx.send("Missing argument(s)!")
                 return  
-            # this code will never run because its checking if avamember is None, which is taken care of
-            # if not avamember: 
-            #     if ctx.message.attachments: #if msg has attachment use that for the image
-            #         for attachment in ctx.message.attachments:
-            #             await attachment.save('deltarune/userpfp2.png') 
-            #         avamember = ('deltarune/userpfp2.png')
-            #     # if ctx.message.match(input): fix this later, need to change avamember to string, do this if string is link, else do everything else
-            #     #     await ctx.send(f'This is a test, {url}')
-            #     else:
-            #         avamember = ctx.author #if no avamember default to user
             if 'color' not in color and 'black' not in color: #default to black
                 color = 'black'
 
