@@ -27,9 +27,8 @@ class database(commands.Cog):
             return
         if message.mentions:
             return
-        for channel in message.guild.text_channels:
-                if channel.is_nsfw():
-                    return
+        if message.channel.is_nsfw():
+            return
         data = 'realdata/' + f"{message.guild.id}" + '.txt' # find server folder and channel file
         if os.path.exists(data): # it exists? awesome write a new line to it
             file = open(data, 'a')
