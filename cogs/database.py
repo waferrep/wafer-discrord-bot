@@ -27,10 +27,9 @@ class database(commands.Cog):
             return
         if message.mentions:
             return
-        for channel in message.guild.text_channels:
-                if channel.is_nsfw():
-                    pass
-        data = 'realdata/' + f"{message.guild.id}" + '.txt.' # find server folder and channel file
+        if message.channel.is_nsfw():
+            return
+        data = 'realdata/' + f"{message.guild.id}" + '.txt' # find server folder and channel file
         if os.path.exists(data): # it exists? awesome write a new line to it
             file = open(data, 'a')
             file.write(f"{message.channel.id}-{message.id}" + "\n")
@@ -57,7 +56,7 @@ class database(commands.Cog):
                         async for msgholder in chnl.history(limit=None):
                             if not msgholder.content or msgholder.content[0] == "-" or msgholder.author.bot or msgholder.mentions:
                                 continue
-                            data = 'realdata/' + f"{ctx.guild.id}" + '.txt.' # find server folder and channel file
+                            data = 'realdata/' + f"{ctx.guild.id}" + '.txt' # find server folder and channel file
                             if os.path.exists(data): # it exists? awesome write a new line to it
                                 file = open(data, 'a')
                                 file.write(f"{msgholder.channel.id}-{msgholder.id}" + "\n")
@@ -79,7 +78,7 @@ class database(commands.Cog):
         if ctx.author.id == ID:
             if ctx.author == self.client.user:
                 return
-            data = 'realdata/' + f"{ctx.guild.id}" + '.txt.' # find server folder and channel file
+            data = 'realdata/' + f"{ctx.guild.id}" + '.txt' # find server folder and channel file
             if os.path.exists(data): # it exists? awesome write a new line to it
                 file = open(data, 'w')
                 file.close()
